@@ -1,8 +1,6 @@
 from string import punctuation
 
 
-#def stop_words_portugues():
-
 stops = ['de',
          'a',
          'o',
