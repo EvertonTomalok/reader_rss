@@ -57,7 +57,7 @@ def sumarizador(texto):
     # Recuperamos os indices que obtiverem as maiores pontuações.
     # Obedecemos o num acima, como delimitador de sentenças a serem recuperadas.
     sents_idx = nlargest(num, ranking, key=ranking.get)
-    texto_sumarizado = '\n... '.join([sents[j] for j in sorted(sents_idx)])
+    texto_sumarizado = '\n\n               ...\n\n '.join([sents[j] for j in sorted(sents_idx)])
 
     return texto_sumarizado
 

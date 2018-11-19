@@ -59,7 +59,9 @@ def crawl_noticias(iteravel, categoria):
                 print(f'->\033[;1m Data de postagem: \033[m{data_postagem} {frase_a_direita:>70}', end='\n\n\n')
 
                 # Texto Sumarizado
-                print(f'     {texto}\n\n')
+                print('='*60, '\n{:^50}'.format('\033[;1mCONTEÚDO\033[m'), end='\n\n')
+                print(f' {texto}\n\n')
+                print('=' * 60, end='\n\n')
 
                 # link
                 print(f' Link: \033[;4m{news[contador][2]}\033[m')
