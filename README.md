@@ -11,7 +11,6 @@ Um sumarizador de notícias, de diversas fontes, agrupadas por categorias.
 Rode um shell python, e execute o comando a seguir:
 
     >> import nltk
-    >> ntlk.download('stopwords')
     >> nltk.download('punkt')
   
 
