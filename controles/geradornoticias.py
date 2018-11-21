@@ -40,49 +40,46 @@ def crawl_noticias(iteravel, categoria):
 
         contador = 0
 
-        num_noticias = len(news)
+        while True:
 
-        if num_noticias > 0:
-            while True:
+            tamanho_cat = len(categoria)
+            print('-' * (tamanho_cat + 4))
+            print(f'  {categoria.upper()}')
+            print('-' * (tamanho_cat + 4))
 
-                tamanho_cat = len(categoria)
-                print('-' * (tamanho_cat + 4))
-                print(f'  {categoria.upper()}')
-                print('-' * (tamanho_cat + 4))
+            texto = sumarizador(news[contador][1])
+            data_postagem = news[contador][3].strftime('%A - %d/%B/%Y %H:%M:%S')
 
-                texto = sumarizador(news[contador][1])
-                data_postagem = news[contador][3].strftime('%A - %d/%B/%Y %H:%M:%S')
+            # Titulo da noticia
+            frase_a_direita = '\033[;1mNotícia atual:\033[m ' + str(contador + 1) + '/' + str(total)
+            print(f'\n\n\n \033[;1m Título: {news[contador][0]}  \033[m ', end='\n')
+            print(f'->\033[;1m Data de postagem: \033[m{data_postagem} {frase_a_direita:>70}', end='\n\n\n')
 
-                # Titulo da noticia
-                frase_a_direita = '\033[;1mNotícia atual:\033[m ' + str(contador + 1) + '/' + str(num_noticias)
-                print(f'\n\n\n \033[;1m Título: {news[contador][0]}  \033[m ', end='\n')
-                print(f'->\033[;1m Data de postagem: \033[m{data_postagem} {frase_a_direita:>70}', end='\n\n\n')
+            # Texto Sumarizado
+            print('='*60, '\n{:^50}'.format('\033[;1mCONTEÚDO\033[m'), end='\n\n')
+            print(f' {texto}\n\n')
+            print('=' * 60, end='\n\n')
 
-                # Texto Sumarizado
-                print('='*60, '\n{:^50}'.format('\033[;1mCONTEÚDO\033[m'), end='\n\n')
-                print(f' {texto}\n\n')
-                print('=' * 60, end='\n\n')
+            # link
+            print(f' Link: \033[;4m{news[contador][2]}\033[m')
 
-                # link
-                print(f' Link: \033[;4m{news[contador][2]}\033[m')
+            verificacao = input(
+                '\n\n\n   '
+                'Aperte qualquer tecla para ir para próxima notícia, :v para voltar ou :q para sair.'
+                '\n\n    ')
 
-                verificacao = input(
-                    '\n\n\n   '
-                    'Aperte qualquer tecla para ir para próxima notícia, :v para voltar ou :q para sair.'
-                    '\n\n    ')
+            clear()
 
-                clear()
+            if verificacao == ':q':
+                break
 
-                if verificacao == ':q':
-                    break
+            elif verificacao == ':v':
+                if contador > 0:
+                    contador -= 1
 
-                elif verificacao == ':v':
-                    if contador > 0:
-                        contador -= 1
-
-                else:
-                    if contador < num_noticias - 1:
-                        contador += 1
+            else:
+                if contador < total - 1:
+                    contador += 1
 
         clear()
 

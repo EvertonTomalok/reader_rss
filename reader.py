@@ -1,4 +1,4 @@
-from controles.gerador_menu  import menu, sair, clear
+from controles.gerador_menu import menu, sair, clear
 
 
 if __name__ == '__main__':
