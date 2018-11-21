@@ -49,7 +49,7 @@ def sumarizador(texto):
                 ranking[i] += freq[w]
 
     # definindo o número de sentenças que devem gerar o sumário
-    if 2 < len(sents) < 3:
+    if 2 < len(sents) < 5:
         num = 2
     else:
         num = 3
