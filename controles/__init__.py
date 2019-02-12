@@ -9,6 +9,12 @@ import re
 from datetime import datetime, timedelta
 
 
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+     nltk.download('punkt')
+
+
 def meu_tokenizer(string):
     """
     Just a tokenizer created using module 're'

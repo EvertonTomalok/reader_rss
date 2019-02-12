@@ -1,0 +1,17 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[packages]
+nltk = '>=3.4'
+tqdm = '>=4.31.1'
+feedparser = '>=5.2.1'
+beautifulsoup4 = '>=4.7.1'
+lxml = ">=4.3.1"
+
+[requires]
+python_version = "3.6"
+
+[dev-packages]
+pylint = "*"
