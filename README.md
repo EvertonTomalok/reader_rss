@@ -17,7 +17,7 @@ Abral um `terminal` ou shell, e instale os requisitos necessários.
         
         or
         
-        pip install --user nltk tqdm feedparser beautifulsoup4 lxml
+        pip install --user nltk tqdm feedparser beautifulsoup4
 
 # Após isso, rode o programa:
     

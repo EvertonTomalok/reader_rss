@@ -1,18 +1,19 @@
-import feedparser
-from bs4 import BeautifulSoup
-import nltk
-import unicodedata
-from doc.stop_words import words
-from heapq import nlargest
-from collections import defaultdict
 import re
+import unicodedata
+from collections import defaultdict
 from datetime import datetime, timedelta
+from heapq import nlargest
 
+import nltk
+from bs4 import BeautifulSoup
+
+import feedparser
+from doc.stop_words import words
 
 try:
-    nltk.data.find('tokenizers/punkt')
+    nltk.data.find("tokenizers/punkt")
 except LookupError:
-     nltk.download('punkt')
+    nltk.download("punkt")
 
 
 def meu_tokenizer(string):
@@ -29,9 +30,16 @@ def sumarizador(texto):
     ranking = defaultdict(int)
 
     # Preprocessing
-    texto = texto.replace('R$', ' ').replace('$', ' ').replace('\n', ' ').replace('\t', ' ').replace('.', '. ').strip()
+    texto = (
+        texto.replace("R$", " ")
+        .replace("$", " ")
+        .replace("\n", " ")
+        .replace("\t", " ")
+        .replace(".", ". ")
+        .strip()
+    )
     texto = unicodedata.normalize("NFKD", texto)
-    texto = ' '.join(texto.split())
+    texto = " ".join(texto.split())
 
     # Tokenization
     tokens = meu_tokenizer(texto)
@@ -63,7 +71,9 @@ def sumarizador(texto):
     # Recuperamos os indices que obtiverem as maiores pontuações.
     # Obedecemos o num acima, como delimitador de sentenças a serem recuperadas.
     sents_idx = nlargest(num, ranking, key=ranking.get)
-    texto_sumarizado = '\n\n               ...\n\n '.join([sents[j] for j in sorted(sents_idx)])
+    texto_sumarizado = "\n\n               ...\n\n ".join(
+        [sents[j] for j in sorted(sents_idx)]
+    )
 
     return texto_sumarizado
 
@@ -81,12 +91,12 @@ def parser_feed(url):
             except Exception:
                 not_con = post.summary
 
-            soup_conteudo = BeautifulSoup(not_con, 'lxml')
-            soup_title = BeautifulSoup(post.title, 'lxml')
+            soup_conteudo = BeautifulSoup(not_con, "lxml")
+            soup_title = BeautifulSoup(post.title, "lxml")
             link = post.link
 
             try:
-                data = post['published_parsed']
+                data = post["published_parsed"]
 
                 y = data.tm_year
                 m = data.tm_mon
@@ -100,7 +110,7 @@ def parser_feed(url):
             except Exception:
                 data = datetime.now() - timedelta(hours=12)
 
-            if 'vídeos' not in soup_title.text.lower():
+            if "vídeos" not in soup_title.text.lower():
 
                 textos.append((soup_title.text, soup_conteudo.text, link, data))
 
