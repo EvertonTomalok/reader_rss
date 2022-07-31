@@ -15,6 +15,9 @@ try:
 except LookupError:
     nltk.download("punkt")
 
+import warnings
+warnings.filterwarnings("ignore")
+
 
 def meu_tokenizer(string):
     """
