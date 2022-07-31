@@ -3,7 +3,7 @@ from time import sleep
 
 from tqdm import tqdm
 
-from controles import *
+from src.controles import *
 
 
 def clear():

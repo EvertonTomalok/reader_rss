@@ -2,8 +2,19 @@
 
 Um sumarizador de notícias, de diversas fontes, agrupadas por categorias.
 
+# Instalando no seu SO
 
-# Instalando os Requisitos
+Abra um `terminal` ou shell e rode o comando:
+    - python3 setup.py install --user
+
+Agora rode:
+    - reader-rss
+
+O Prompt de escolhas ira aparecer
+
+
+# Instalação alternativa
+## Instalando os Requisitos
 
 Abral um `terminal` ou shell, e instale os requisitos necessários.
 
@@ -19,7 +30,7 @@ Abral um `terminal` ou shell, e instale os requisitos necessários.
         
         pip install --user nltk tqdm feedparser beautifulsoup4
 
-# Após isso, rode o programa:
+## Após isso, rode o programa:
     
 Obs.: Se você instalou via pipenv, rode primeiro `pipenv shell`
 

@@ -1,5 +1,5 @@
-from controles.geradornoticias import clear, crawl_noticias
-from doc.links import *
+from src.controles.geradornoticias import clear, crawl_noticias
+from src.doc.links import *
 
 
 def sair():

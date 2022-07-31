@@ -1,2 +1,5 @@
 __pycache__
 
+READER_RSS.egg-info
+build
+dist

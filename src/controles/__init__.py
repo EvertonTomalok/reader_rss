@@ -8,7 +8,7 @@ import nltk
 from bs4 import BeautifulSoup
 
 import feedparser
-from doc.stop_words import words
+from src.doc.stop_words import words
 
 try:
     nltk.data.find("tokenizers/punkt")
